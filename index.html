@@ -7,6 +7,12 @@
 
 	<body onload="calculate()">
 
+		<div>Import/Export:
+			<input id="json_box" onchange="deserialize()"></input>
+			<button onclick="copy_json()">Copy to Clipboard</button>
+			<button>Import</button><!-- This button is a dummy so you can paste and then click "Import" to import.-->
+		</div>
+
 		<div>Character Level: <span id="level"></span></div>
 		
 		<div>

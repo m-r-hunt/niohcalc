@@ -28,6 +28,20 @@ spirit_stats = {
 		"daiba_washi": "skill"
 }
 
+serializable_controls = [
+		"body_levels",
+		"heart_levels",
+		"stamina_levels",
+		"strength_levels",
+		"skill_levels",
+		"dexterity_levels",
+		"magic_levels",
+		"spirit_levels",
+		"starting_weapon_1",
+		"starting_weapon_2",
+		"starting_guardian_spirit"
+]
+
 function level_counter(stat, change) {
 		var levels = parseInt(document.getElementById(stat + "_levels").value)
 		var new_levels = Math.max(0, levels + change)
@@ -83,6 +97,29 @@ function calculate_levels(stats) {
 		stats["level"] = total_levels
 }
 
+function update_json_box() {
+		var json = {}
+		for (var i = 0; i < serializable_controls.length; ++i) {
+				ctrl = serializable_controls[i]
+				json[ctrl] = document.getElementById(ctrl).value
+		}
+		document.getElementById("json_box").value = JSON.stringify(json)
+}
+
+function deserialize() {
+		var json = JSON.parse(document.getElementById("json_box").value)
+		for (var i = 0; i < serializable_controls.length; ++i) {
+				ctrl = serializable_controls[i]
+				document.getElementById(ctrl).value = json[ctrl]
+		}
+		calculate()
+}
+
+function copy_json() {
+		document.getElementById("json_box").select()
+		document.execCommand("copy")
+}
+
 // Calculate all stats and update page with new values.
 function calculate() {
 		console.log("Calculating")
@@ -96,4 +133,6 @@ function calculate() {
 		for (var attr in stats) {
 				document.getElementById(attr).innerHTML = stats[attr]
 		}
+
+		update_json_box();
 }

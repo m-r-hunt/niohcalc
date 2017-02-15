@@ -28,6 +28,7 @@ spirit_stats = {
 		"daiba_washi": "skill"
 }
 
+// List of all widgets that need their values imported/exported.
 serializable_controls = [
 		"body_levels",
 		"heart_levels",
@@ -42,6 +43,7 @@ serializable_controls = [
 		"starting_guardian_spirit"
 ]
 
+// Callback for stat level +/- buttons.
 function level_counter(stat, change) {
 		var levels = parseInt(document.getElementById(stat + "_levels").value)
 		var new_levels = Math.max(0, levels + change)
@@ -53,6 +55,7 @@ function level_counter(stat, change) {
 		}
 }
 
+// Callback for typing in a stat level value.
 function set_level_counter(stat) {
 		var levels = parseInt(document.getElementById(stat + "_levels").value)
 		var new_levels = Math.max(0, levels)
@@ -97,6 +100,14 @@ function calculate_levels(stats) {
 		stats["level"] = total_levels
 }
 
+// Update all widgets with calculated values.
+function update_widgets(stats) {
+		for (var attr in stats) {
+				document.getElementById(attr).innerHTML = stats[attr]
+		}
+}
+
+// Compute a json string based on the current character and display it.
 function update_json_box() {
 		var json = {}
 		for (var i = 0; i < serializable_controls.length; ++i) {
@@ -106,6 +117,7 @@ function update_json_box() {
 		document.getElementById("json_box").value = JSON.stringify(json)
 }
 
+// Take a json string out of the json box and update everything to those values.
 function deserialize() {
 		var json = JSON.parse(document.getElementById("json_box").value)
 		for (var i = 0; i < serializable_controls.length; ++i) {
@@ -115,6 +127,7 @@ function deserialize() {
 		calculate()
 }
 
+// Copy json string to clipboard. Probably doesn't work on old browsers.
 function copy_json() {
 		document.getElementById("json_box").select()
 		document.execCommand("copy")
@@ -122,17 +135,14 @@ function copy_json() {
 
 // Calculate all stats and update page with new values.
 function calculate() {
-		console.log("Calculating")
-
+		// Initialise.
 		var stats = copy_base_stats()
 
+		// Do calculations.
 		calculate_starting_bonuses(stats)
 		calculate_levels(stats)
-		
-		console.log("Calculating done: " + JSON.stringify(stats))
-		for (var attr in stats) {
-				document.getElementById(attr).innerHTML = stats[attr]
-		}
 
+		// Update IO stuff.
+		update_widgets(stats)
 		update_json_box();
 }

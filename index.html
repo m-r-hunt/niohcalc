@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<script src="calc.js"></script>
+	</head>
+
+	<body onload="calculate()">
+
+		<div>
+		Starting Weapon 1: <select id="starting_weapon_1" onchange="calculate()">
+			<option value="sword">Sword (Heart +1)</option>
+			<option value="dual_swords">Dual Swords (Skill +1)</option>
+			<option value="spear">Spear (Body +1)</option>
+			<option value="axe">Axe (Strength +1)</option>
+			<option value="kusarigama">Kusarigama (Dexterity +1)</option>
+		</select>
+		</div>
+
+		<div>
+		Starting Weapon 2: <select id="starting_weapon_2" onchange="calculate()">
+			<option value="sword">Sword (Heart +1)</option>
+			<option value="dual_swords">Dual Swords (Skill +1)</option>
+			<option value="spear">Spear (Body +1)</option>
+			<option value="axe">Axe (Strength +1)</option>
+			<option value="kusarigama">Kusarigama (Dexterity +1)</option>
+		</select>
+		</div>
+
+		<div>
+			Starting Guardian Spirit: <select id="starting_guardian_spirit" onchange="calculate()">
+				<option value="kato">Kato (Stength +1)</option>
+				<option value="isonade">Isonade (Spirit +1)</option>
+				<option value="daiba_washi">Daiba-Washi (Skill +1)</option>
+			</select>
+		</div>
+				
+
+		Body: <span id="body"></span>
+		Heart: <span id="heart"></span>
+		Stamina: <span id="stamina"></span>
+		Strength: <span id="strength"></span>
+	  Skill: <span id="skill"></span>
+		Dexterity: <span id="dexterity"></span>
+		Magic: <span id="magic"></span>
+		Spirit: <span id="spirit"></span>
+
+	</body>
+</html>

@@ -1,22 +1,67 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<script src="calc.js"></script>
 	</head>
 
 	<body onload="calculate()">
 
-		<div>Body: <span id="body"></span></div>
-		<div>Heart: <span id="heart"></span></div>
-		<div>Stamina: <span id="stamina"></span></div>
-		<div>Strength: <span id="strength"></span></div>
-	  <div>Skill: <span id="skill"></span></div>
-		<div>Dexterity: <span id="dexterity"></span></div>
-		<div>Magic: <span id="magic"></span></div>
-		<div>Spirit: <span id="spirit"></span></div>
+		<div>Character Level: <span id="level"></span></div>
+		
+		<div>
+			Body: <span id="body"></span>
+			Levels:
+			<button id="body_minus" onclick="level_counter('body', -1)">-</button>
+			<input id="body_levels" value="0" onchange="set_level_counter('body')"/>
+			<button id="body_plus" onclick="level_counter('body', +1)">+</button>
+		</div>
+		<div>Heart: <span id="heart"></span>
+			Levels:
+			<button id="heart_minus" onclick="level_counter('heart', -1)">-</button>
+			<input id="heart_levels" value="0" onchange="set_level_counter('heart')"/>
+			<button id="heart_plus" onclick="level_counter('heart', +1)">+</button>
+		</div>
+		<div>Stamina: <span id="stamina"></span>
+			Levels:
+			<button id="stamina_minus" onclick="level_counter('stamina', -1)">-</button>
+			<input id="stamina_levels" value="0" onchange="set_level_counter('stamina')"/>
+			<button id="stamina_plus" onclick="level_counter('stamina', +1)">+</button>
+		</div>
+		<div>Strength: <span id="strength"></span>
+			Levels:
+			<button id="strength_minus" onclick="level_counter('strength', -1)">-</button>
+			<input id="strength_levels" value="0" onchange="set_level_counter('strength')"/>
+			<button id="strength_plus" onclick="level_counter('strength', +1)">+</button>
+		</div>
+	  <div>Skill: <span id="skill"></span>
+			Levels:
+			<button id="skill_minus" onclick="level_counter('skill', -1)">-</button>
+			<input id="skill_levels" value="0" onchange="set_level_counter('skill')"/>
+			<button id="skill_plus" onclick="level_counter('skill', +1)">+</button>
+		</div>
+		<div>Dexterity: <span id="dexterity"></span>
+			Levels:
+			<button id="dexterity_minus" onclick="level_counter('dexterity', -1)">-</button>
+			<input id="dexterity_levels" value="0" onchange="set_level_counter('dexterity')"/>
+			<button id="dexterity_plus" onclick="level_counter('dexterity', +1)">+</button>
+		</div>
+		<div>Magic: <span id="magic"></span>
+			Levels:
+			<button id="magic_minus" onclick="level_counter('magic', -1)">-</button>
+			<input id="magic_levels" value="0" onchange="set_level_counter('magic')"/>
+			<button id="magic_plus" onclick="level_counter('magic', +1)">+</button>
+		</div>
+		<div>Spirit: <span id="spirit"></span>
+			Levels:
+			<button id="spirit_minus" onclick="level_counter('spirit', -1)">-</button>
+			<input id="spirit_levels" value="0" onchange="set_level_counter('spirit')"/>
+			<button id="spirit_plus" onclick="level_counter('spirit', +1)">+</button>
+		</div>
 
 		<div>
 		Starting Weapon 1: <select id="starting_weapon_1" onchange="calculate()">
-			<option value="sword">Sword (Heart +1)</option>
+			<option value="sword" selected="selected">Sword (Heart +1)</option>
 			<option value="dual_swords">Dual Swords (Skill +1)</option>
 			<option value="spear">Spear (Body +1)</option>
 			<option value="axe">Axe (Strength +1)</option>
@@ -27,7 +72,7 @@
 		<div>
 		Starting Weapon 2: <select id="starting_weapon_2" onchange="calculate()">
 			<option value="sword">Sword (Heart +1)</option>
-			<option value="dual_swords">Dual Swords (Skill +1)</option>
+			<option value="dual_swords" selected="selected">Dual Swords (Skill +1)</option>
 			<option value="spear">Spear (Body +1)</option>
 			<option value="axe">Axe (Strength +1)</option>
 			<option value="kusarigama">Kusarigama (Dexterity +1)</option>

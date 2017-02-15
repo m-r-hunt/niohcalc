@@ -1,3 +1,5 @@
+// Nioh stat calculator code.
+
 // Base starting stats. All fives.
 base_stats = {
 		"body": 5,
@@ -26,6 +28,26 @@ spirit_stats = {
 		"daiba_washi": "skill"
 }
 
+function level_counter(stat, change) {
+		var levels = parseInt(document.getElementById(stat + "_levels").value)
+		var new_levels = Math.max(0, levels + change)
+		document.getElementById(stat + "_levels").value = new_levels
+
+		// Update everything else based on changes.
+		if (levels != new_levels) {
+				calculate()
+		}
+}
+
+function set_level_counter(stat) {
+		var levels = parseInt(document.getElementById(stat + "_levels").value)
+		var new_levels = Math.max(0, levels)
+		document.getElementById(stat + "_levels").value = new_levels
+
+		// Update everything else. We have to assume a change.
+		calculate()
+}
+
 // Copy base stats into a new object to be calculated with.
 function copy_base_stats() {
 		ret = {}
@@ -34,6 +56,7 @@ function copy_base_stats() {
 		for (var attr in base_stats) {
 				ret[attr] = base_stats[attr]
 		}
+		
 		return ret
 }
 
@@ -47,7 +70,17 @@ function calculate_starting_bonuses(stats) {
 
 		var spirit_stat = spirit_stats[document.getElementById("starting_guardian_spirit").value]
 		stats[spirit_stat] += 1
+}
 
+// Increase stats based on level values and calculate char level required.
+function calculate_levels(stats) {
+		var total_levels = 1
+		for (var stat in base_stats) {
+				var levels = parseInt(document.getElementById(stat + "_levels").value)
+				stats[stat] += levels
+				total_levels += levels
+		}
+		stats["level"] = total_levels
 }
 
 // Calculate all stats and update page with new values.
@@ -57,8 +90,9 @@ function calculate() {
 		var stats = copy_base_stats()
 
 		calculate_starting_bonuses(stats)
+		calculate_levels(stats)
 		
-		console.log(stats)
+		console.log("Calculating done: " + JSON.stringify(stats))
 		for (var attr in stats) {
 				document.getElementById(attr).innerHTML = stats[attr]
 		}

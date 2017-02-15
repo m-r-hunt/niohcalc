@@ -89,15 +89,42 @@ function calculate_starting_bonuses(stats) {
 		stats[spirit_stat] += 1
 }
 
+function levels(stat) {
+  return parseInt(document.getElementById(stat + "_levels").value)
+}
+
 // Increase stats based on level values and calculate char level required.
 function calculate_levels(stats) {
 		var total_levels = 1
 		for (var stat in base_stats) {
-				var levels = parseInt(document.getElementById(stat + "_levels").value)
-				stats[stat] += levels
-				total_levels += levels
+				var s_levels = levels(stat)
+				stats[stat] += s_levels
+				total_levels += s_levels
 		}
 		stats["level"] = total_levels
+}
+
+function calculate_samurai_points(stats) {
+		var points = 0
+		points += Math.floor(stats.level / 5) * 2
+		points += Math.floor(levels("body") / 2)
+		points += Math.floor(levels("heart") / 2)
+		points += Math.floor(levels("stamina") / 2)
+		points += Math.floor(levels("strength") / 2)
+		points += Math.floor(levels("skill") / 2)
+		stats["samurai_skill_points"] = points
+}
+
+function calculate_ninja_points(stats) {
+		var points = 0
+		if (stats.level >= 5) points += 2
+		points += levels("dexterity") * 2
+		stats["ninja_skill_points"] = points
+}
+
+function calculate_magic_points(stats) {
+		var points = levels("magic") * 2
+		stats["magic_skill_points"] = points
 }
 
 // Update all widgets with calculated values.
@@ -141,6 +168,9 @@ function calculate() {
 		// Do calculations.
 		calculate_starting_bonuses(stats)
 		calculate_levels(stats)
+		calculate_samurai_points(stats)
+		calculate_ninja_points(stats)
+		calculate_magic_points(stats)
 
 		// Update IO stuff.
 		update_widgets(stats)

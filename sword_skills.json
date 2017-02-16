@@ -11,6 +11,13 @@
 								"description": "A more better parry.",
 								"passive": false,
 								"subskills": []
+						},
+						{
+								"name": "Haze 3",
+								"cost": 4,
+								"description": "A more better parry.2",
+								"passive": true,
+								"subskills": []
 						}
 				]
 		}

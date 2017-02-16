@@ -4,6 +4,7 @@ import "text/template"
 import "encoding/json"
 import "os"
 import "strings"
+import "fmt"
 
 type skill struct {
 	Name        string `json:name`
@@ -31,8 +32,10 @@ func main() {
 		panic(err)
 	}
 	generate_code_names(skills)
+	fmt.Println("<ul>")
 	err = tmpl.Execute(os.Stdout, skills[0])
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("</ul>")
 }

@@ -1,6 +1,7 @@
 <li>
-  <input id="{{.Code_name}}" type="checkbox"></input>{{.Name}} (<span id="{{.Code_name}}_pts">{{.Cost}}) - {{if .Passive}}Passive: {{end}}{{.Description}}
+  <input id="{{.Code_name}}" type="checkbox"></input>{{.Name}} (<span id="{{.Code_name}}_pts">{{.Cost}}</span> point{{if ne .Cost 1}}s{{end}}) - {{if .Passive}}Passive: {{end}}{{.Description}}
+	{{- if gt (len .Subskills) 0}}
 	<ul>
-		{{range .Subskills}} {{template "skills.html.template" .}} {{end}}
-  </ul>
+		{{range .Subskills}} {{template "skills.html.template" .}} {{end -}}
+  </ul>{{end}}
 </li>

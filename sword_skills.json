@@ -1,16 +1,16 @@
 [
 		{
-				name: "Haze",
-				cost: 1,
-				description: "A parry or some shit.",
-				passive: false,
-				subskills: [
+				"name": "Haze",
+				"cost": 1,
+				"description": "A parry or some shit.",
+				"passive": false,
+				"subskills": [
 						{
-								name: "Haze 2",
-								cost: 3,
-								description: "A more better parry.",
-								passive: false,
-								subskills: []
+								"name": "Haze 2",
+								"cost": 3,
+								"description": "A more better parry.",
+								"passive": false,
+								"subskills": []
 						}
 				]
 		}

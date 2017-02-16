@@ -133,6 +133,21 @@ function calculate_magic_points(stats) {
 	stats["magic_skill_points"] = points;
 }
 
+var sword_skills = ["haze", "haze_2"];
+
+function calculate_sword_skills(stats) {
+	var skills = []
+	var points = 0
+	for (var i = 0; i < sword_skills.length; ++i) {
+		if (document.getElementById(sword_skills[i]).checked) {
+			points += parseInt(document.getElementById(sword_skills[i] + "_pts").innerHTML)
+			skills.push(sword_skills[i])
+		}
+	}
+	//stats["sword_skills"] = skills;
+	stats["sword_skill_points"] = points;
+}
+
 // Update all widgets with calculated values.
 function update_widgets(stats) {
 	for (var attr in stats) {
@@ -180,6 +195,8 @@ function calculate() {
 	calculate_samurai_points(stats);
 	calculate_ninja_points(stats);
 	calculate_magic_points(stats);
+		
+	calculate_sword_skills(stats);
 
 	// Update IO stuff.
 	update_widgets(stats);

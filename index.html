@@ -69,6 +69,8 @@
 		<div>Ninja Skill Points: <span id="ninja_skill_points"></span></div>
 		<div>Magic Skill Points: <span id="magic_skill_points"></span></div>
 
+		<div>Point spent on Sword skills: <span id="sword_skill_points"></span></div>
+
 		<div>
 		Starting Weapon 1: <select id="starting_weapon_1" onchange="calculate()">
 			<option value="sword" selected="selected">Sword (Heart +1)</option>
@@ -96,6 +98,18 @@
 				<option value="daiba_washi">Daiba-Washi (Skill +1)</option>
 			</select>
 		</div>
+
+		<ul>
+			<li>
+				<input id="haze" type="checkbox" onchange="calculate()"></input>Haze (<span id="haze_pts">1</span> point) - A parry or some shit.
+				
+				<ul>
+					<li>
+						<input id="haze_2" type="checkbox" onchange="calculate()"></input>Haze 2  (<span id="haze_2_pts">3</span> points) - A more better parry.
+					</li>
+				</ul>
+			</li>
+		</ul>
 
 	</body>
 </html>

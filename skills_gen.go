@@ -49,9 +49,11 @@ func main() {
 
 	fmt.Println("<ul>")
 
-	err = tmpl.Execute(os.Stdout, skills[0])
-	if err != nil {
-		panic(err)
+	for i := range skills {
+		err = tmpl.Execute(os.Stdout, skills[i])
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	fmt.Println("</ul>")
